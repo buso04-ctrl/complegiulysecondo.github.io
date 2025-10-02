@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video QR</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+    .tap {
+      position: fixed;
+      bottom: 10%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: #fff;
+      font: 16px system-ui, Arial;
+    }
+  </style>
+</head>
+<body>
+  <video id="vid" playsinline autoplay muted controls>
+    <source src="VID-20250930-WA0025.mp4" type="video/mp4">
+    Il tuo browser non supporta il video.
+  </video>
+  <div class="tap">Tocca per attivare l’audio 🔊</div>
+
+  <script>
+    const v = document.getElementById('vid');
+    const tap = document.querySelector('.tap');
+    const unmute = () => {
+      v.muted = false;
+      tap.style.display = 'none';
+    };
+    window.addEventListener('touchstart', unmute, { once: true });
+  </script>
+</body>
+</html>
